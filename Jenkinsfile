@@ -29,7 +29,14 @@ pipeline {
                 """
             }
         }
-        
+        stage ('Build'){
+            steps {
+                sh """
+                zip -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+                ls -ltr
+                """
+            }
+        }
     }
     post { 
         always { 
